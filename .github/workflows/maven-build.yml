@@ -31,10 +31,12 @@ jobs:
           java-version: ${{matrix.java}}
           distribution: 'adopt'
           cache: maven
+      - name: Build with Maven Wrapper
+        run: ./mvnw -B package
 #test
       - name: Run Maven Tests
         run: mvn test --file pom.xml
-#jfrog
+#new
       - name: Setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v3
         env:
@@ -62,7 +64,18 @@ jobs:
           jf rt build-add-git
           # Publish build info
           jf rt build-publish
-#sbom
+        
+#docker
+#      - name: Build Docker Image
+#        run: docker build -t bengold7/project-green:latest .
+#security
+#      - name: Scan Docker Image
+#        uses: anchore/scan-action@v3
+#        with:
+#          image: "bengold7/project-green:latest"
+#          fail-build: false
+#          output-format: json
+#          vex: true
       - name: Create SBOM
         uses: anchore/sbom-action@v0
         with:
@@ -73,10 +86,19 @@ jobs:
         with:
           sbom: "${{ github.event.repository.name }}-sbom.spdx.json"
           fail-build: false
-
+#      - name: Upload a Build Artifact
+#        uses: actions/upload-artifact@v4.0.0
+#        with:
+#          # Artifact name
+#          name: Artifact
+#          # A file, directory or wildcard pattern that describes what to upload
+#          path: |
+#            ./results.json
+#source-code            ./results.sarif
+#debug
       - name: Debug
         run: |
-          ls -lRa
+          ls -lR
 #jf
 #      - name: JF Integration
 #        uses: jfrog/setup-jfrog-cli@v3
