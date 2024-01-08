@@ -40,3 +40,5 @@ jobs:
         uses: anchore/scan-action@v3
         with:
           image: "bengold7/project-green:latest"
+          fail-build: true
+          severity-cutoff: critical
