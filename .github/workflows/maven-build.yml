@@ -33,11 +33,13 @@ jobs:
           cache: maven
 #new
       - name: maven-settings-xml-action
-        uses: whelk-io/maven-settings-xml-action@v4
+        uses: whelk-io/maven-settings-xml-action@v20
         with:
           servers: '[{ "username": "qons.ben@gmail.com", "password": "AKCpBrvkPggFiJjScqtj1TWDuWEna2KEitBxVxU8WyeWwxzeyEbAj8arvW6BnEvRpEJenPXfe", "id": "central" }]'
           repositories: '[{ "snapshots": { "enabled": "false" }, "id": "snapshots", "name": "project-green-libs-snapshot", "url": "https://bengold.jfrog.io/artifactory/project-green-libs-snapshot" }]'
           plugin_repositories: '[{ "snapshots": { "enabled": "false" }, "id": "snapshots", "name": "project-green-libs-snapshot", "url": "https://bengold.jfrog.io/artifactory/project-green-libs-snapshot" }]'
+          active_profiles: '[{ "artifactory" }]'
+          output_file: '[{ ".m2/settings.xml" }]'
 
       - name: Build with Maven
         run: mvn -B package --file pom.xml
