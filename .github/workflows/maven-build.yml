@@ -66,21 +66,6 @@ jobs:
           path: |
             ./results.json
 #source-code            ./results.sarif
-#new
-      - name: Depcheck
-        uses: dependency-check/Dependency-Check_Action@main
-        id: Depcheck
-        with:
-          project: 'project-green'
-          path: '.'
-          format: 'HTML'
-            
-      - name: Upload Test results
-        uses: actions/upload-artifact@master
-        with:
-          name: Depcheck report
-          path: ${{github.workspace}}/reports
-
 #debug
       - name: Debug
         run: |
