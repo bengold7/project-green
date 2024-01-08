@@ -35,11 +35,55 @@ jobs:
       - name: maven-settings-xml-action
         uses: whelk-io/maven-settings-xml-action@v20
         with:
-          servers: '[{ "username": "qons.ben@gmail.com", "password": "AKCpBrvkPggFiJjScqtj1TWDuWEna2KEitBxVxU8WyeWwxzeyEbAj8arvW6BnEvRpEJenPXfe", "id": "central" }]'
-          repositories: '[{ "snapshots": { "enabled": "false" }, "id": "snapshots", "name": "project-green-libs-snapshot", "url": "https://bengold.jfrog.io/artifactory/project-green-libs-snapshot" }]'
-          plugin_repositories: '[{ "snapshots": { "enabled": "false" }, "id": "snapshots", "name": "project-green-libs-snapshot", "url": "https://bengold.jfrog.io/artifactory/project-green-libs-snapshot" }]'
-          active_profiles: '[{ "artifactory" }]'
-          output_file: '[{ ".m2/settings.xml" }]'
+            repositories: >
+              [
+                {
+                  "id": "central",
+                  "name": "project-green-libs-release",
+                  "url": "https://bengold.jfrog.io/artifactory/project-green-libs-release",
+                  },
+                  "id": "snapshots",
+                  "name": "project-green-libs-release",
+                  "url": "https://bengold.jfrog.io/artifactory/project-green-libs-release",
+                  }
+                }
+              ]
+            plugin_repositories: >
+              [
+                {
+                  "id": "central",
+                  "name": "project-green-libs-release",
+                  "url": "https://bengold.jfrog.io/artifactory/project-green-libs-release",
+                  },
+                  "id": "snapshots",
+                  "name": "project-green-libs-release",
+                  "url": "https://bengold.jfrog.io/artifactory/project-green-libs-release",
+                  }
+                }
+              ]
+            servers: >
+              [
+                {
+                  "id": "central",
+                  "username": "qons.ben@gmail.com",
+                  "password": "AKCpBrvkPggFiJjScqtj1TWDuWEna2KEitBxVxU8WyeWwxzeyEbAj8arvW6BnEvRpEJenPXfe",
+                  },
+                  "id": "snapshots",
+                  "username": "qons.ben@gmail.com",
+                  "password": "AKCpBrvkPggFiJjScqtj1TWDuWEna2KEitBxVxU8WyeWwxzeyEbAj8arvW6BnEvRpEJenPXfe",
+                  },
+                  "snapshots": {
+                  "enabled": "false"
+                      }
+                    }
+                  }
+                }
+              ]
+            active_profiles: >
+              [
+                "artifactory"
+              ]
+            output_file: .m2/settings.xml
 
       - name: Build with Maven
         run: mvn -B package --file pom.xml
