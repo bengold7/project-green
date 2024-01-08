@@ -433,5 +433,11 @@
       </build>
     </profile>
   </profiles>
-
+  <distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>a0mkpa33edrba-artifactory-primary-0-snapshots</name>
+        <url>https://bengold.jfrog.io/artifactory/project-green-libs-snapshot</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
