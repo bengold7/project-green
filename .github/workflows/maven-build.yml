@@ -36,17 +36,46 @@ jobs:
 #test
       - name: Run Maven Tests
         run: mvn test --file pom.xml
+#new
+      - name: Setup JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v3
+        env:
+          JF_URL: ${{ secrets.JF_URL }}
+          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+
+      - name: Build Tag and push Docker Image
+        env:
+          IMAGE_NAME: bengold.jfrog.io/project-green-docker/jfrog-docker-example-image:${{ github.run_number }}
+        run: |
+          jf docker build -t $IMAGE_NAME .
+          jf docker push $IMAGE_NAME
+          
+      - name: Publish Build info With JFrog CLI
+        env:
+          # Generated and maintained by GitHub
+          JFROG_CLI_BUILD_NAME: jfrog-docker-build-example
+          # JFrog organization secret
+          JFROG_CLI_BUILD_NUMBER : ${{ github.run_number }}
+        run: |
+          # Export the build name and build nuber
+          # Collect environment variables for the build
+          jf rt build-collect-env
+          # Collect VCS details from git and add them to the build
+          jf rt build-add-git
+          # Publish build info
+          jf rt build-publish
+        
 #docker
-      - name: Build Docker Image
-        run: docker build -t bengold7/project-green:latest .
+#      - name: Build Docker Image
+#        run: docker build -t bengold7/project-green:latest .
 #security
-      - name: Scan Docker Image
-        uses: anchore/scan-action@v3
-        with:
-          image: "bengold7/project-green:latest"
-          fail-build: false
-          output-format: json
-          vex: true
+#      - name: Scan Docker Image
+#        uses: anchore/scan-action@v3
+#        with:
+#          image: "bengold7/project-green:latest"
+#          fail-build: false
+#          output-format: json
+#          vex: true
       - name: Create SBOM
         uses: anchore/sbom-action@v0
         with:
@@ -57,28 +86,27 @@ jobs:
         with:
           sbom: "${{ github.event.repository.name }}-sbom.spdx.json"
           fail-build: false
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.0.0
-        with:
-          # Artifact name
-          name: Artifact
-          # A file, directory or wildcard pattern that describes what to upload
-          path: |
-            ./results.json
+#      - name: Upload a Build Artifact
+#        uses: actions/upload-artifact@v4.0.0
+#        with:
+#          # Artifact name
+#          name: Artifact
+#          # A file, directory or wildcard pattern that describes what to upload
+#          path: |
+#            ./results.json
 #source-code            ./results.sarif
 #debug
       - name: Debug
         run: |
           ls -lR
 #jf
-      - name: JF Integration
-        uses: jfrog/setup-jfrog-cli@v3
-        env:
-          # JFrog platform url (for example: https://acme.jfrog.io) 
-          JF_URL: https://bengold.jfrog.io
-          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
-      - run: |
-          jf rt ping
-      - name: Publish to Artifactory
-        run: |
-          jfrog rt u "target/*.jar" "project-green-libs-snapshot" --build-name=project-green --build-number=${{ github.run_number }}
+#      - name: JF Integration
+#        uses: jfrog/setup-jfrog-cli@v3
+#        env:
+#          # JFrog platform url (for example: https://acme.jfrog.io) 
+#          JF_URL: https://bengold.jfrog.io
+#          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+#      - name: Publish to Artifactory
+#        run: |
+#          jfrog rt u "target/*.jar" "project-green-libs-snapshot" --build-name=project-green --build-number=${{ github.run_number }}
+#          jfrog rt u "Dockerimage" "project-green-libs-snapshot" --build-name=project-green --build-number=${{ github.run_number }}
