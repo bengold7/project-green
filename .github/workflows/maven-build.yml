@@ -79,3 +79,6 @@ jobs:
           JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
       - run: |
           jf rt ping
+      - name: Publish to Artifactory
+        run: |
+          jfrog rt u "target/*.jar" "project-green-libs-snapshot" --build-name=project-green --build-number=${{ github.run_number }}
