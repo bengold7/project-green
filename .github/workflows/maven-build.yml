@@ -38,8 +38,6 @@ jobs:
           servers: '[{ "username": "qons.ben@gmail.com", "password": "AKCpBrvkPggFiJjScqtj1TWDuWEna2KEitBxVxU8WyeWwxzeyEbAj8arvW6BnEvRpEJenPXfe", "id": "central" }]'
           repositories: '[{ "snapshots": { "enabled": "false" }, "id": "snapshots", "name": "project-green-libs-snapshot", "url": "https://bengold.jfrog.io/artifactory/project-green-libs-snapshot" }]'
           plugin_repositories: '[{ "snapshots": { "enabled": "false" }, "id": "snapshots", "name": "project-green-libs-snapshot", "url": "https://bengold.jfrog.io/artifactory/project-green-libs-snapshot" }]'
-          mirrors: '[{ "id": "nexus", "mirrorOf": "!my-org-snapshots,*", "url": "http://redacted/nexus/content/groups/public" }]'
-          profiles: '[{ "id": "foo.profile", "name": "foo.profile", "url": "http://foo.bar.profile", "properties": { "foo": "property-1", "bar": "property-2"} }]'
 
       - name: Build with Maven Wrapper
         run: ./mvnw -B package
