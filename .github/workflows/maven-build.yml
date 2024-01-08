@@ -46,11 +46,9 @@ jobs:
           image: "bengold7/project-green:latest"
           fail-build: false
           output-format: json
-      - name: Upload artifact
-        uses: actions/upload-artifact@v1.0.0
-        with:
-          name: AnchoreReports
-          path: ./anchore-reports/
+      - name: Debug
+        run: |
+          ls -lR     
       - name: Create SBOM
         uses: anchore/sbom-action@v0
         with:
