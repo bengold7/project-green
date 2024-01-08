@@ -42,10 +42,10 @@ jobs:
                   "name": "project-green-libs-release",
                   "url": "https://bengold.jfrog.io/artifactory/project-green-libs-release",
                   },
+                { 
                   "id": "snapshots",
                   "name": "project-green-libs-release",
                   "url": "https://bengold.jfrog.io/artifactory/project-green-libs-release",
-                  }
                 }
               ]
             plugin_repositories: >
@@ -55,10 +55,10 @@ jobs:
                   "name": "project-green-libs-release",
                   "url": "https://bengold.jfrog.io/artifactory/project-green-libs-release",
                   },
+                {
                   "id": "snapshots",
                   "name": "project-green-libs-release",
                   "url": "https://bengold.jfrog.io/artifactory/project-green-libs-release",
-                  }
                 }
               ]
             servers: >
@@ -68,6 +68,7 @@ jobs:
                   "username": "qons.ben@gmail.com",
                   "password": "AKCpBrvkPggFiJjScqtj1TWDuWEna2KEitBxVxU8WyeWwxzeyEbAj8arvW6BnEvRpEJenPXfe",
                   },
+                  {
                   "id": "snapshots",
                   "username": "qons.ben@gmail.com",
                   "password": "AKCpBrvkPggFiJjScqtj1TWDuWEna2KEitBxVxU8WyeWwxzeyEbAj8arvW6BnEvRpEJenPXfe",
@@ -75,9 +76,6 @@ jobs:
                   "snapshots": {
                   "enabled": "false"
                       }
-                    }
-                  }
-                }
               ]
             active_profiles: >
               [
