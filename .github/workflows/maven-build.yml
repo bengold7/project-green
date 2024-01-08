@@ -105,6 +105,10 @@ jobs:
               # [Mandatory]
               # The name of the branch on which Frogbot will perform the scan
               JF_GIT_BASE_BRANCH: ${{ matrix.branch }}
+#newscan
+      - name: Xray Scan
+        run: |
+          jf bs
 
 #debug
       - name: Debug
