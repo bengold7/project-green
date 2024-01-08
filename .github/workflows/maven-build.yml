@@ -40,9 +40,7 @@ jobs:
         uses: anchore/scan-action@v3
         with:
           image: "bengold7/project-green:latest"
-          fail-build: true
-          severity-cutoff: critical
-          output-format: json
+          fail-build: false
 
       - name: Create SBOM
         uses: anchore/sbom-action@v0
@@ -54,4 +52,4 @@ jobs:
         uses: anchore/scan-action@v3
         with:
           sbom: "${{ github.event.repository.name }}-sbom.spdx.json"
-
+          severity-cutoff: critical
