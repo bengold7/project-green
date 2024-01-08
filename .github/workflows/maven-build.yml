@@ -46,10 +46,10 @@ jobs:
           fail-build: false
           output-format: json
       - name: Upload artifact
-            uses: actions/upload-artifact@v1.0.0
-            with:
-              name: AnchoreReports
-              path: ./anchore-reports/
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: AnchoreReports
+          path: ./anchore-reports/
       - name: Create SBOM
         uses: anchore/sbom-action@v0
         with:
