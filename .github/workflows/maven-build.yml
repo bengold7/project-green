@@ -39,8 +39,8 @@ jobs:
           repositories: '[{ "snapshots": { "enabled": "false" }, "id": "snapshots", "name": "project-green-libs-snapshot", "url": "https://bengold.jfrog.io/artifactory/project-green-libs-snapshot" }]'
           plugin_repositories: '[{ "snapshots": { "enabled": "false" }, "id": "snapshots", "name": "project-green-libs-snapshot", "url": "https://bengold.jfrog.io/artifactory/project-green-libs-snapshot" }]'
 
-      - name: Build with Maven Wrapper
-        run: ./mvnw -B package
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
 #test
       - name: Run Maven Tests
         run: mvn test --file pom.xml
