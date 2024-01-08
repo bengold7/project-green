@@ -31,7 +31,6 @@ jobs:
           java-version: ${{matrix.java}}
           distribution: 'adopt'
           cache: maven
-
       - name: Settings File for Maven
         run: |
                         echo '<?xml version="1.0" encoding="UTF-8"?>
