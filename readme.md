@@ -106,7 +106,7 @@ uses: jfrog/setup-jfrog-cli@v3
 ```bash
 run: jf docker build -t $IMAGE_NAME . | run: jf docker push $IMAGE_NAME
 ```
-10. **Publish Build info With JFrog CLI** - Sends extra info such as environment variables, VCS details and build info to JFrog Artifactory.
+10. **Publish extra info with JFrog CLI** - Sends extra info such as environment variables, VCS details and build info to JFrog Artifactory.
 ```bash
 run: jf rt build-collect-env | run: jf rt build-add-git | jf rt build-publish
 ```
