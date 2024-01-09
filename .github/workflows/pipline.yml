@@ -1,6 +1,3 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
-
 name: Full Pipline
 permissions:
   contents: write
@@ -63,7 +60,7 @@ jobs:
 
       - name: Build and push to JFrog Artifactory
         env:
-          IMAGE_NAME: bengold.jfrog.io/project-green-docker/jfrog-docker-example-image:${{ github.run_number }}
+          IMAGE_NAME: bengold.jfrog.io/project-green-docker/project-green-v1:${{ github.run_number }}
         run: |
           jf docker build -t $IMAGE_NAME .
           jf docker push $IMAGE_NAME
