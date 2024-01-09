@@ -39,6 +39,21 @@ jobs:
 #test
       - name: Run Maven Tests
         run: mvn test --file pom.xml
+#dockerhub
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/project-green-v1:${{ github.run_number }}
 #jfrog
       - name: Setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v3
@@ -67,23 +82,6 @@ jobs:
           jf rt build-add-git
           # Publish build info
           jf rt build-publish
-
-#dockerhub
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/project-green-v1:tagname
-
 #sbom        
       - name: Create SBOM
         uses: anchore/sbom-action@v0
