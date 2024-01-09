@@ -122,7 +122,42 @@ uses: anchore/scan-action@v3
 ```bash
 uses: jfrog/frogbot@v2
 ```
-  
+
+## Vulnerabilities
+
+### Frogbot in GitHub Actions
+
+Scan Data complete report - Please also choose the most critical CVE to handle (in your opinion) and explain: why & what is the impact
+
+| Order | CVE | Severity | Component | Fixable? | Potential Impact |
+| --- | --- | --- | --- | --- | --- |
+| 1 | CVE-2023-22102 | High | com.mysql:mysql-connector-j 8.1.0 | X | Data Theft |
+| 2 | CVE-2023-51074 | Warning | com.jayway.jsonpath:json-path 2.8.0 | X | DDoS |
+| 3 | CVE-2023-6378 | High | ch.qos.logback:logback-core 1.4.11 | V | DDoS |
+
+- Risk Scope: In my opinion, Data Theft is more risky than DDoS attack (unless it is hospital/ sensitive organizations)
+- Reputation: `MySql` is often used. `logback` and `json-path` have a lot of alternatives.
+- Fix: I chose `json-path` over `logback` only for the reason that it can't be fixed yet so it require more attention until replacement/fix.
+
+### JFrog Xray Scan
+
+| Order | CVE | Severity | Component | Fixable? | Potential Impact |
+| --- | --- | --- | --- | --- | --- |
+| 1 | CVE-2023-4911 | High | 8:glibc:0:2.28-164.0.5.el8_5.3 | V | Privilege Escalation |
+| 2 | CVE-2022-2068 & CVE-2022-1292 | Medium | 8:openssl-libs:1:1.1.1k-6.el8_5 | V | Arbitrary code execution and Command injection |
+| 3 | CVE-2023-6378 | High | 8:zlib:0:1.2.11-17.el8 | V | DDoS |
+
+- Risk Scope: In my opinion, Privelge Escalation equals to jackpot in Cyber attacks.
+- Reputation: All of the libraries above are often used.
+- All of the CVEs are aplicable. *In this case I chose mostly because of the potential risk*
+
+### Attachments
+
+- Scan Data complete report - [Download - .zip](https://github.com/bengold7/project-green/files/13875847/Docker_jfrog-docker-example-image_version-8_qons.ben%40gmail.com_2024-01-09.1.zip)
+- SBOM during the pipline - [Download - .zip](https://github.com/bengold7/project-green/files/13875978/project-green-full-pipline.spdx.json.zip)
+
+
+
 ## License
 
 The Spring PetClinic sample application is released under version 2.0 of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
