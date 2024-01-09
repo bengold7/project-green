@@ -129,33 +129,36 @@ uses: jfrog/frogbot@v2
 
 Scan Data complete report - Please also choose the most critical CVE to handle (in your opinion) and explain: why & what is the impact
 
-| Order | CVE | Severity | Component | Fixable? | Potential Impact |
-| --- | --- | --- | --- | --- | --- |
-| 1 | CVE-2023-22102 | High | com.mysql:mysql-connector-j 8.1.0 | X | Data Theft |
-| 2 | CVE-2023-51074 | Warning | com.jayway.jsonpath:json-path 2.8.0 | X | DDoS |
-| 3 | CVE-2023-6378 | High | ch.qos.logback:logback-core 1.4.11 | V | DDoS |
+| Order | CVE | Severity | Component | Fixable? | Potential Impact | Applicable? |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | CVE-2023-51074 | Warning | com.jayway.jsonpath:json-path 2.8.0 | X | DDoS | N/A |
+| 2 | CVE-2023-6378 | High | ch.qos.logback:logback-core 1.4.11 | V | DDoS | N/A |
+| 3 | CVE-2023-22102 | High | com.mysql:mysql-connector-j 8.1.0 | X | Data Theft | NO |
 
-- Risk Scope: In my opinion, Data Theft is more risky than DDoS attack (unless it is hospital/ sensitive organizations)
-- Reputation: `MySql` is often used. `logback` and `json-path` have a lot of alternatives.
-- Fix: I chose `json-path` over `logback` only for the reason that it can't be fixed yet so it require more attention until replacement/fix.
+- **Risk Scope**: In my opinion, Data Theft is more risky than DDoS attack (unless it is hospital/ sensitive organizations)
+- **Reputation**: `MySql` is often used and hard to replace. `logback` and `json-path` have a lot of alternatives.
+- **Fix**: I chose `json-path` over `logback` only for the reason that it can't be fixed yet so it require more attention until replacement/fix.
+- **Applicability**: Although `MySql` presents the highest risk, it is not applicable and therefore I downgraded it to the end of the list.
+- *Neither Xray scans could determine if the other components are applicable*
 
 ### JFrog Xray Scan
 
-| Order | CVE | Severity | Component | Fixable? | Potential Impact |
-| --- | --- | --- | --- | --- | --- |
-| 1 | CVE-2023-4911 | High | 8:glibc:0:2.28-164.0.5.el8_5.3 | V | Privilege Escalation |
-| 2 | CVE-2022-2068 & CVE-2022-1292 | Medium | 8:openssl-libs:1:1.1.1k-6.el8_5 | V | Arbitrary code execution and Command injection |
-| 3 | CVE-2023-6378 | High | 8:zlib:0:1.2.11-17.el8 | V | DDoS |
+| Order | CVE | Severity | Component | Fixable? | Potential Impact | Applicable? |
+| --- | --- | --- | --- | --- | --- | --- | 
+| 1 | CVE-2023-4911 | High | 8:glibc:0:2.28-164.0.5.el8_5.3 | YES | Privilege Escalation | YES |
+| 2 | CVE-2022-2068 & CVE-2022-1292 | Medium | 8:openssl-libs:1:1.1.1k-6.el8_5 | YES | Arbitrary code execution and Command injection | YES |
+| 3 | CVE-2023-6378 | High | 8:zlib:0:1.2.11-17.el8 | YES | DDoS | YES |
 
-- Risk Scope: In my opinion, Privelge Escalation equals to jackpot in Cyber attacks.
-- Reputation: All of the libraries above are often used.
-- All of the CVEs are aplicable. *In this case I chose mostly because of the potential risk*
+- **Risk Scope**: In my opinion, Privelge Escalation equals to jackpot in Cyber attacks.
+- **Reputation**: All of the libraries above are often used.
+- **Fix**: All of the libraries are fixable.
+- **Applicability**: All of the CVEs are aplicable.
+- *In this case I chose mostly because of the potential impact*
 
 ### Attachments
 
 - Scan Data complete report - [Download - .zip](https://github.com/bengold7/project-green/files/13875847/Docker_jfrog-docker-example-image_version-8_qons.ben%40gmail.com_2024-01-09.1.zip)
 - SBOM during the pipline - [Download - .zip](https://github.com/bengold7/project-green/files/13875978/project-green-full-pipline.spdx.json.zip)
-
 
 
 ## License
