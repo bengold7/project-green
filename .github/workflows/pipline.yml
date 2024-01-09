@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-#scan
+#staticscan
 #     - name: Scan source code
 #       uses: anchore/scan-action@v3
 #       with:
@@ -47,7 +47,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      - name: Build and push
+      - name: Build and push to Docker Hub
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -61,14 +61,14 @@ jobs:
           JF_URL: ${{ secrets.JF_URL }}
           JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
 
-      - name: Build Tag and push Docker Image
+      - name: Build and push to JFrog Artifactory
         env:
           IMAGE_NAME: bengold.jfrog.io/project-green-docker/jfrog-docker-example-image:${{ github.run_number }}
         run: |
           jf docker build -t $IMAGE_NAME .
           jf docker push $IMAGE_NAME
           
-      - name: Publish Build info With JFrog CLI
+      - name: Publish extra info with JFrog CLI
         env:
           # Generated and maintained by GitHub
           JFROG_CLI_BUILD_NAME: jfrog-docker-build-example
@@ -121,8 +121,8 @@ jobs:
               # The name of the branch on which Frogbot will perform the scan
               JF_GIT_BASE_BRANCH: ${{ matrix.branch }}
 #debug
-      - name: Debug
-        run: |
-          ls -lR
+#     - name: Debug
+#       run: |
+#         ls -lR
 #          jfrog rt u "target/*.jar" "project-green-libs-snapshot" --build-name=project-green --build-number=${{ github.run_number }}
 #          jfrog rt u "Dockerimage" "project-green-libs-snapshot" --build-name=project-green --build-number=${{ github.run_number }}
