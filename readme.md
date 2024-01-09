@@ -1,6 +1,6 @@
-# Spring PetClinic Sample Application [![Scanned by Frogbot](https://raw.github.com/jfrog/frogbot/master/images/frogbot-badge.svg)](https://docs.jfrog-applications.jfrog.io/jfrog-applications/frogbot)
+![image](https://github.com/bengold7/project-green/assets/155953562/5510cbdc-fa33-4232-8f5a-896e7ae54a97)# Spring PetClinic Sample Application [![Scanned by Frogbot]
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/spring-projects/spring-petclinic) [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=7517918)
+![image](https://github.com/bengold7/project-green/assets/155953562/a6d802b3-bc25-43b0-ae40-efbcc411b727)
 
 ## Understanding the Spring Petclinic application with a few diagrams
 
