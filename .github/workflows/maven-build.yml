@@ -109,15 +109,5 @@ jobs:
       - name: Debug
         run: |
           ls -lR
-#jf
-      - name: JF Integration
-        uses: jfrog/setup-jfrog-cli@v3
-        env:
-          # JFrog platform url (for example: https://acme.jfrog.io) 
-          JF_URL: https://bengold.jfrog.io
-          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
-      - name: Publish to Artifactory
-        run: |
-          jf bs
 #          jfrog rt u "target/*.jar" "project-green-libs-snapshot" --build-name=project-green --build-number=${{ github.run_number }}
 #          jfrog rt u "Dockerimage" "project-green-libs-snapshot" --build-name=project-green --build-number=${{ github.run_number }}
