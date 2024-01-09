@@ -15,6 +15,7 @@ jobs:
       - uses: jfrog/frogbot@v2
         env:
           # [Mandatory]
+          JF_REQUIREMENTS_FILE: "requirements.txt"
           # JFrog platform URL
           JF_URL: ${{ secrets.JF_URL }}
 
@@ -33,7 +34,6 @@ jobs:
           # [Mandatory]
           # The GitHub token is automatically generated for the job
           JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          JF_REQUIREMENTS_FILE: "requirements.txt"
           # [Optional, default: https://api.github.com]
           # API endpoint to GitHub
           # JF_GIT_API_ENDPOINT: https://github.example.com
