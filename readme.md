@@ -1,4 +1,4 @@
-![image](https://github.com/bengold7/project-green/assets/155953562/5510cbdc-fa33-4232-8f5a-896e7ae54a97)# Spring PetClinic Sample Application [![Scanned by Frogbot]
+# Spring PetClinic Sample Application [![Scanned by Frogbot]
 
 ![image](https://github.com/bengold7/project-green/assets/155953562/a6d802b3-bc25-43b0-ae40-efbcc411b727)
 
