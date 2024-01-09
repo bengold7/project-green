@@ -1,5 +1,7 @@
 # Spring PetClinic Sample Application [![Scanned by Frogbot]
 
+![image](https://github.com/bengold7/project-green/assets/155953562/efbdcb36-dfab-4108-8c89-681183f20d72)
+
 ![image](https://github.com/bengold7/project-green/assets/155953562/a6d802b3-bc25-43b0-ae40-efbcc411b727)
 
 ## Understanding the Spring Petclinic application with a few diagrams
