@@ -131,7 +131,7 @@ Scan Data complete report - Please also choose the most critical CVE to handle (
 
 | Order | CVE | Severity | Component | Fixable? | Potential Impact | Applicable? |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | CVE-2023-51074 | Warning | com.jayway.jsonpath:json-path 2.8.0 | X | DDoS | N/A |
+| 1 | CVE-2023-51074 | High | com.jayway.jsonpath:json-path 2.8.0 | X | DDoS | N/A |
 | 2 | CVE-2023-6378 | High | ch.qos.logback:logback-core 1.4.11 | V | DDoS | N/A |
 | 3 | CVE-2023-22102 | High | com.mysql:mysql-connector-j 8.1.0 | X | Data Theft | NO |
 
