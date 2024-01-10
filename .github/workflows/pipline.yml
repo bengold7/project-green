@@ -60,7 +60,7 @@ jobs:
 
       - name: Build and push to JFrog Artifactory
         env:
-          IMAGE_NAME: ${{ secrets.JF_URL }}project-green-docker/project-green-v1:${{ github.run_number }}
+          IMAGE_NAME: bengold.jfrog.io/project-green-docker/project-green-v1:${{ github.run_number }}
         run: |
           jf docker build -t $IMAGE_NAME .
           jf docker push $IMAGE_NAME
