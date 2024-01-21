@@ -127,13 +127,11 @@ uses: jfrog/frogbot@v2
 
 ### Frogbot in GitHub Actions
 
-Scan Data complete report - Please also choose the most critical CVE to handle (in your opinion) and explain: why & what is the impact
-
 | Order | CVE | Severity | Component | Fixable? | Potential Impact | Applicable? |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | CVE-2023-51074 | High | com.jayway.jsonpath:json-path 2.8.0 | X | DDoS | N/A |
-| 2 | CVE-2023-6378 | High | ch.qos.logback:logback-core 1.4.11 | V | DDoS | N/A |
-| 3 | CVE-2023-22102 | High | com.mysql:mysql-connector-j 8.1.0 | X | Data Theft | NO |
+| 1 | CVE-2023-51074 | High | com.jayway.jsonpath:json-path 2.8.0 | NO | DDoS | N/A |
+| 2 | CVE-2023-6378 | High | ch.qos.logback:logback-core 1.4.11 | YES | DDoS | N/A |
+| 3 | CVE-2023-22102 | High | com.mysql:mysql-connector-j 8.1.0 | NO | Data Theft | NO |
 
 - **Risk Scope**: In my opinion, Data Theft is more risky than DDoS attack (unless it is hospital/ sensitive organizations)
 - **Reputation**: `MySql` is often used and hard to replace. `logback` and `json-path` have a lot of alternatives.
@@ -157,8 +155,8 @@ Scan Data complete report - Please also choose the most critical CVE to handle (
 
 ### Attachments
 
-- Scan Data complete report - [Download - .zip](https://github.com/bengold7/project-green/files/13875847/Docker_jfrog-docker-example-image_version-8_qons.ben%40gmail.com_2024-01-09.1.zip)
-- SBOM during the pipline - [Download - .zip](https://github.com/bengold7/project-green/files/13875978/project-green-full-pipline.spdx.json.zip)
+- [Download - .zip](https://github.com/bengold7/project-green/files/13875847/Docker_jfrog-docker-example-image_version-8_qons.ben%40gmail.com_2024-01-09.1.zip) - Scan Data complete report
+- [Download - .zip](https://github.com/bengold7/project-green/files/13875978/project-green-full-pipline.spdx.json.zip) - SBOM during the pipline
 
 
 ## License
